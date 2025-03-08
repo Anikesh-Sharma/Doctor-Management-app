@@ -1,0 +1,957 @@
+{
+    "doctors": [
+      {
+        "id": 1,
+        "name": "Dr. John Doe",
+        "specialization": "Cardiology",
+        "clinicAddress": "1001 Cardio Blvd, Cardio City",
+        "experience": 12,
+        "image": "https://media.istockphoto.com/id/1425798958/photo/photo-of-confident-female-doctor-in-hospital-looking-at-camera-with-smile.jpg?s=612x612&w=0&k=20&c=i91idG544pXuYkw5ju6iIzm1m-lEqQaygeOOrjG5GEk=",
+        "appointments": [
+          {
+            "appointmentId": 1001,
+            "patientName": "Alice Smith",
+            "date": "2025-03-10",
+            "time": "09:00",
+            "reason": "Routine check-up"
+          },
+          {
+            "appointmentId": 1002,
+            "patientName": "Bob Johnson",
+            "date": "2025-03-10",
+            "time": "11:00",
+            "reason": "Follow-up consultation"
+          }
+        ],
+        "availability": [
+          {
+            "day": "Monday",
+            "startTime": "09:00",
+            "endTime": "17:00"
+          },
+          {
+            "day": "Wednesday",
+            "startTime": "09:00",
+            "endTime": "17:00"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Dr. Jane Smith",
+        "specialization": "Dermatology",
+        "clinicAddress": "1002 Dermis Rd, Derm City",
+        "experience": 8,
+        "image": "https://media.istockphoto.com/id/1806608544/photo/portrait-of-a-female-doctor-at-the-workplace.jpg?s=612x612&w=0&k=20&c=MARkttlfJ1JoAxKffrmXxbI_rIPJTKWaKTrFv1qwCZc=",
+        "appointments": [
+          {
+            "appointmentId": 1003,
+            "patientName": "Charlie Brown",
+            "date": "2025-03-11",
+            "time": "10:30",
+            "reason": "Skin rash evaluation"
+          }
+        ],
+        "availability": [
+          {
+            "day": "Tuesday",
+            "startTime": "10:00",
+            "endTime": "16:00"
+          },
+          {
+            "day": "Thursday",
+            "startTime": "10:00",
+            "endTime": "16:00"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Dr. Emily Clark",
+        "specialization": "Orthopedics",
+        "clinicAddress": "1003 Ortho St, Ortho Town",
+        "experience": 15,
+        "image": "https://media.istockphoto.com/id/1371009338/photo/portrait-of-confident-a-young-dentist-working-in-his-consulting-room.jpg?s=612x612&w=0&k=20&c=I212vN7lPpAOwGKRoEY9kYWunJaMj9vH2g-8YBGc2MI=",
+        "appointments": [
+          {
+            "appointmentId": 1004,
+            "patientName": "David Wilson",
+            "date": "2025-03-12",
+            "time": "14:00",
+            "reason": "Bone fracture follow-up"
+          }
+        ],
+        "availability": [
+          {
+            "day": "Monday",
+            "startTime": "09:00",
+            "endTime": "17:00"
+          },
+          {
+            "day": "Wednesday",
+            "startTime": "09:00",
+            "endTime": "17:00"
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Dr. Michael Brown",
+        "specialization": "Neurology",
+        "clinicAddress": "1004 Neuro Ln, Neuro City",
+        "experience": 20,
+        "image": "https://media.istockphoto.com/id/1346124900/photo/confident-successful-mature-doctor-at-hospital.jpg?s=612x612&w=0&k=20&c=S93n5iTDVG3_kJ9euNNUKVl9pgXTOdVQcI_oDGG-QlE=",
+        "appointments": [],
+        "availability": [
+          {
+            "day": "Tuesday",
+            "startTime": "10:00",
+            "endTime": "16:00"
+          },
+          {
+            "day": "Thursday",
+            "startTime": "10:00",
+            "endTime": "16:00"
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "name": "Dr. Sarah Johnson",
+        "specialization": "Pediatrics",
+        "clinicAddress": "1005 Pediatric Ave, Kidstown",
+        "experience": 10,
+        "image": "https://media.istockphoto.com/id/1468678624/photo/nurse-hospital-employee-and-portrait-of-black-man-in-a-healthcare-wellness-and-clinic-feeling.jpg?s=612x612&w=0&k=20&c=AGQPyeEitUPVm3ud_h5_yVX4NKY9mVyXbFf50ZIEtQI=",
+        "appointments": [
+          {
+            "appointmentId": 1005,
+            "patientName": "Emma Davis",
+            "date": "2025-03-13",
+            "time": "09:30",
+            "reason": "Child vaccination"
+          },
+          {
+            "appointmentId": 1006,
+            "patientName": "Fiona Garcia",
+            "date": "2025-03-13",
+            "time": "11:30",
+            "reason": "Pediatric consultation"
+          }
+        ],
+        "availability": [
+          {
+            "day": "Monday",
+            "startTime": "09:00",
+            "endTime": "17:00"
+          },
+          {
+            "day": "Wednesday",
+            "startTime": "09:00",
+            "endTime": "17:00"
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "name": "Dr. David Wilson",
+        "specialization": "ENT",
+        "clinicAddress": "1006 ENT Plaza, Ear Nose City",
+        "experience": 7,
+        "image": "https://media.istockphoto.com/id/1486172842/photo/portrait-of-male-nurse-in-his-office.jpg?s=612x612&w=0&k=20&c=vBIEvzn70aQ6X6yy0Vjy-9Gfy-YC0IlmOjrKFYdBUzk=",
+        "appointments": [
+          {
+            "appointmentId": 1007,
+            "patientName": "George Martinez",
+            "date": "2025-03-14",
+            "time": "12:00",
+            "reason": "Ear infection"
+          }
+        ],
+        "availability": [
+          {
+            "day": "Tuesday",
+            "startTime": "10:00",
+            "endTime": "16:00"
+          },
+          {
+            "day": "Thursday",
+            "startTime": "10:00",
+            "endTime": "16:00"
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "name": "Dr. Laura Davis",
+        "specialization": "Gastroenterology",
+        "clinicAddress": "1007 Gastro Rd, Gastro City",
+        "experience": 18,
+        "image": "https://media.istockphoto.com/id/1434687410/photo/portrait-of-happy-and-successful-african-american-doctor-man-working-inside-office-clinic.jpg?s=612x612&w=0&k=20&c=kKvUmzkotN3FrWTGgS3ar2mm4SLwlV3cbiNC-Bp12YI=",
+        "appointments": [
+          {
+            "appointmentId": 1008,
+            "patientName": "Hannah Anderson",
+            "date": "2025-03-15",
+            "time": "10:00",
+            "reason": "Stomach pain evaluation"
+          },
+          {
+            "appointmentId": 1009,
+            "patientName": "Ian Thomas",
+            "date": "2025-03-15",
+            "time": "15:00",
+            "reason": "Digestive check-up"
+          }
+        ],
+        "availability": [
+          {
+            "day": "Monday",
+            "startTime": "09:00",
+            "endTime": "17:00"
+          },
+          {
+            "day": "Wednesday",
+            "startTime": "09:00",
+            "endTime": "17:00"
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "name": "Dr. Robert Garcia",
+        "specialization": "Endocrinology",
+        "clinicAddress": "1008 Endocrine Way, Endo Town",
+        "experience": 14,
+        "image": "https://media.istockphoto.com/id/668598078/photo/cheerful-doctor-posing.jpg?s=612x612&w=0&k=20&c=Vbhk7jNeRYtTbhgTPwTn08Evw_hl_w18OUOaGKaa-0Y=",
+        "appointments": [
+          {
+            "appointmentId": 1010,
+            "patientName": "Julia Moore",
+            "date": "2025-03-16",
+            "time": "13:00",
+            "reason": "Thyroid check-up"
+          }
+        ],
+        "availability": [
+          {
+            "day": "Tuesday",
+            "startTime": "10:00",
+            "endTime": "16:00"
+          },
+          {
+            "day": "Thursday",
+            "startTime": "10:00",
+            "endTime": "16:00"
+          }
+        ]
+      },
+      {
+        "id": 9,
+        "name": "Dr. Linda Martinez",
+        "specialization": "Psychiatry",
+        "clinicAddress": "1009 Mind Care Blvd, Psych City",
+        "experience": 9,
+        "image": "https://media.istockphoto.com/id/1327024466/photo/portrait-of-male-doctor-in-white-coat-and-stethoscope-standing-in-clinic-hall.jpg?s=612x612&w=0&k=20&c=49wqOwwuonk9f8NACL7M_5RosqQPFwJ8-dpmeo9AvQw=",
+        "appointments": [
+          {
+            "appointmentId": 1011,
+            "patientName": "Kevin Martin",
+            "date": "2025-03-17",
+            "time": "09:00",
+            "reason": "Mental health evaluation"
+          },
+          {
+            "appointmentId": 1012,
+            "patientName": "Laura Lee",
+            "date": "2025-03-17",
+            "time": "11:00",
+            "reason": "Counseling session"
+          }
+        ],
+        "availability": [
+          {
+            "day": "Monday",
+            "startTime": "09:00",
+            "endTime": "17:00"
+          },
+          {
+            "day": "Wednesday",
+            "startTime": "09:00",
+            "endTime": "17:00"
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "name": "Dr. James Anderson",
+        "specialization": "Urology",
+        "clinicAddress": "1010 Uro Ave, Uro City",
+        "experience": 11,
+        "image": "https://media.istockphoto.com/id/537282044/photo/dont-hesitate-to-stop-by-without-buying-anything.jpg?s=612x612&w=0&k=20&c=i5oLsIrZ-OKaCVhj2EtBTiKCpK23rnf9OuC_azy-EIo=",
+        "appointments": [
+          {
+            "appointmentId": 1013,
+            "patientName": "Michael Harris",
+            "date": "2025-03-18",
+            "time": "10:30",
+            "reason": "Urinary tract infection"
+          }
+        ],
+        "availability": [
+          {
+            "day": "Tuesday",
+            "startTime": "10:00",
+            "endTime": "16:00"
+          },
+          {
+            "day": "Thursday",
+            "startTime": "10:00",
+            "endTime": "16:00"
+          }
+        ]
+      },
+      {
+        "id": 11,
+        "name": "Dr. Patricia Taylor",
+        "specialization": "Nephrology",
+        "clinicAddress": "1011 Kidney St, Nephro Town",
+        "experience": 13,
+        "image": "https://media.istockphoto.com/id/2050883733/photo/happy-successful-doctor-woman-medical-worker-in-white-lab-coat-standing-with-crossed-arms-on.jpg?s=612x612&w=0&k=20&c=XOMsFZDPrgn_jG9_702BTXyz114CxJwS2C45KYnLOqQ=",
+        "appointments": [],
+        "availability": [
+          {
+            "day": "Monday",
+            "startTime": "09:00",
+            "endTime": "17:00"
+          },
+          {
+            "day": "Wednesday",
+            "startTime": "09:00",
+            "endTime": "17:00"
+          }
+        ]
+      },
+      {
+        "id": 12,
+        "name": "Dr. Barbara Moore",
+        "specialization": "Rheumatology",
+        "clinicAddress": "1012 Joint Rd, Rheum City",
+        "experience": 16,
+        "image": "https://media.istockphoto.com/id/1468678629/photo/portrait-healthcare-and-tablet-with-a-doctor-woman-at-work-in-a-hospital-for-research-or.jpg?s=612x612&w=0&k=20&c=8mSMYs7a6eHIZ2EFm-9x6Z2WQHW3uOruYXXzT7JugYI=",
+        "appointments": [
+          {
+            "appointmentId": 1014,
+            "patientName": "Nina Clark",
+            "date": "2025-03-19",
+            "time": "14:30",
+            "reason": "Joint pain consultation"
+          },
+          {
+            "appointmentId": 1015,
+            "patientName": "Oliver Lewis",
+            "date": "2025-03-19",
+            "time": "16:00",
+            "reason": "Arthritis evaluation"
+          }
+        ],
+        "availability": [
+          {
+            "day": "Tuesday",
+            "startTime": "10:00",
+            "endTime": "16:00"
+          },
+          {
+            "day": "Thursday",
+            "startTime": "10:00",
+            "endTime": "16:00"
+          }
+        ]
+      },
+      {
+        "id": 13,
+        "name": "Dr. Daniel Martin",
+        "specialization": "Oncology",
+        "clinicAddress": "1013 Onco Ln, Onco City",
+        "experience": 25,
+        "image": "https://media.istockphoto.com/id/1372002650/photo/cropped-portrait-of-an-attractive-young-female-doctor-standing-with-her-arms-folded-in-the.jpg?s=612x612&w=0&k=20&c=o1QtStNsowOU0HSof6xQ_jZMglU8ZK565gHd655U6S4=",
+        "appointments": [
+          {
+            "appointmentId": 1016,
+            "patientName": "Pamela Walker",
+            "date": "2025-03-20",
+            "time": "09:45",
+            "reason": "Cancer screening follow-up"
+          }
+        ],
+        "availability": [
+          {
+            "day": "Monday",
+            "startTime": "09:00",
+            "endTime": "17:00"
+          },
+          {
+            "day": "Wednesday",
+            "startTime": "09:00",
+            "endTime": "17:00"
+          }
+        ]
+      },
+      {
+        "id": 14,
+        "name": "Dr. Jennifer Lee",
+        "specialization": "Pulmonology",
+        "clinicAddress": "1014 Lung Blvd, Pulmo Town",
+        "experience": 22,
+        "image": "https://media.istockphoto.com/id/1133516739/photo/portrait-of-confident-female-surgeon-in-hospital.jpg?s=612x612&w=0&k=20&c=7ECWGMXN5rykLUk0aRbtMtBCVwacvxKv8QZ_pLCWWng=",
+        "appointments": [
+          {
+            "appointmentId": 1017,
+            "patientName": "Quentin Hall",
+            "date": "2025-03-10",
+            "time": "10:15",
+            "reason": "Breathing difficulty evaluation"
+          },
+          {
+            "appointmentId": 1018,
+            "patientName": "Rachel Allen",
+            "date": "2025-03-10",
+            "time": "13:45",
+            "reason": "Pulmonary function test"
+          }
+        ],
+        "availability": [
+          {
+            "day": "Tuesday",
+            "startTime": "10:00",
+            "endTime": "16:00"
+          },
+          {
+            "day": "Thursday",
+            "startTime": "10:00",
+            "endTime": "16:00"
+          }
+        ]
+      },
+      {
+        "id": 15,
+        "name": "Dr. Paul Harris",
+        "specialization": "General Surgery",
+        "clinicAddress": "1015 Surgery St, Surgic City",
+        "experience": 30,
+        "image": "https://media.istockphoto.com/id/1342708859/photo/portrait-of-a-male-doctor.jpg?s=612x612&w=0&k=20&c=7ojvfSnLNx73sR1xXTReBrIXJOZPpSNFZ3E9CodsfQU=",
+        "appointments": [
+          {
+            "appointmentId": 1019,
+            "patientName": "Steven Young",
+            "date": "2025-03-11",
+            "time": "15:00",
+            "reason": "Pre-surgery consultation"
+          }
+        ],
+        "availability": [
+          {
+            "day": "Monday",
+            "startTime": "09:00",
+            "endTime": "17:00"
+          },
+          {
+            "day": "Wednesday",
+            "startTime": "09:00",
+            "endTime": "17:00"
+          }
+        ]
+      },
+      {
+        "id": 16,
+        "name": "Dr. Susan Clark",
+        "specialization": "Plastic Surgery",
+        "clinicAddress": "1016 Aesthetic Ave, Plastic City",
+        "experience": 28,
+        "image": "https://media.istockphoto.com/id/1368282970/photo/portrait-of-turkish-or-arabian-male-nurse.jpg?s=612x612&w=0&k=20&c=J-C-QbXwtXKWR0_rfMtiE9UeF6oL4MyBqwz7adEnJ7o=",
+        "appointments": [
+          {
+            "appointmentId": 1020,
+            "patientName": "Tina Hernandez",
+            "date": "2025-03-12",
+            "time": "11:15",
+            "reason": "Cosmetic surgery consultation"
+          },
+          {
+            "appointmentId": 1021,
+            "patientName": "Ulysses King",
+            "date": "2025-03-12",
+            "time": "14:30",
+            "reason": "Scar revision follow-up"
+          }
+        ],
+        "availability": [
+          {
+            "day": "Tuesday",
+            "startTime": "10:00",
+            "endTime": "16:00"
+          },
+          {
+            "day": "Thursday",
+            "startTime": "10:00",
+            "endTime": "16:00"
+          }
+        ]
+      },
+      {
+        "id": 17,
+        "name": "Dr. Mark Lewis",
+        "specialization": "Ophthalmology",
+        "clinicAddress": "1017 Eye St, Vision Town",
+        "experience": 17,
+        "image": "https://media.istockphoto.com/id/1448391215/photo/studio-portrait-female-doctor-soft-grey-background-positive-emotion-white-coat-looking-to-the.jpg?s=612x612&w=0&k=20&c=jnfzarK0n-YGfiyBr_OFnnnulTsz6R8rGFIXz2Jc8vM=",
+        "appointments": [
+          {
+            "appointmentId": 1022,
+            "patientName": "Victoria Wright",
+            "date": "2025-03-13",
+            "time": "10:00",
+            "reason": "Vision test"
+          }
+        ],
+        "availability": [
+          {
+            "day": "Monday",
+            "startTime": "09:00",
+            "endTime": "17:00"
+          },
+          {
+            "day": "Wednesday",
+            "startTime": "09:00",
+            "endTime": "17:00"
+          }
+        ]
+      },
+      {
+        "id": 18,
+        "name": "Dr. Karen Walker",
+        "specialization": "Dental",
+        "clinicAddress": "1018 Smile Rd, Dental City",
+        "experience": 19,
+        "image": "https://media.istockphoto.com/id/1203995945/photo/portrait-of-mature-male-doctor-wearing-white-coat-standing-in-hospital-corridor.jpg?s=612x612&w=0&k=20&c=Hk-dqLqHXyYa4aTqjieXNk9-HQSE8WEYUAjA1sXsy_s=",
+        "appointments": [
+          {
+            "appointmentId": 1023,
+            "patientName": "William Lopez",
+            "date": "2025-03-14",
+            "time": "09:30",
+            "reason": "Dental check-up"
+          },
+          {
+            "appointmentId": 1024,
+            "patientName": "Xena Hill",
+            "date": "2025-03-14",
+            "time": "12:30",
+            "reason": "Oral hygiene consultation"
+          }
+        ],
+        "availability": [
+          {
+            "day": "Tuesday",
+            "startTime": "10:00",
+            "endTime": "16:00"
+          },
+          {
+            "day": "Thursday",
+            "startTime": "10:00",
+            "endTime": "16:00"
+          }
+        ]
+      },
+      {
+        "id": 19,
+        "name": "Dr. Steven Hall",
+        "specialization": "Obstetrics & Gynecology",
+        "clinicAddress": "1019 Women's Health Blvd, OB-GYN Town",
+        "experience": 23,
+        "image": "https://media.istockphoto.com/id/1785918657/photo/portrait-of-doctor-with-smile-confidence-and-hospital-employee-with-care-support-and-trust.jpg?s=612x612&w=0&k=20&c=edx0LITtjis5zxtRZIbx24yholpv4oNicE-e69guius=",
+        "appointments": [
+          {
+            "appointmentId": 1025,
+            "patientName": "Yvonne Scott",
+            "date": "2025-03-15",
+            "time": "11:00",
+            "reason": "Prenatal consultation"
+          }
+        ],
+        "availability": [
+          {
+            "day": "Monday",
+            "startTime": "09:00",
+            "endTime": "17:00"
+          },
+          {
+            "day": "Wednesday",
+            "startTime": "09:00",
+            "endTime": "17:00"
+          }
+        ]
+      },
+      {
+        "id": 20,
+        "name": "Dr. Nancy Allen",
+        "specialization": "Family Medicine",
+        "clinicAddress": "1020 Family Medicine Rd, Family City",
+        "experience": 10,
+        "image": "https://media.istockphoto.com/id/1219120627/photo/happy-young-female-doctor-on-grey-wall.jpg?s=612x612&w=0&k=20&c=56Z_mzTn_ThbqVAct-O2ckot_LCXZNHbJRUx7ALWHDc=",
+        "appointments": [
+          {
+            "appointmentId": 1026,
+            "patientName": "Zachary Green",
+            "date": "2025-03-16",
+            "time": "14:00",
+            "reason": "Family health check-up"
+          },
+          {
+            "appointmentId": 1027,
+            "patientName": "Alice Smith",
+            "date": "2025-03-16",
+            "time": "16:30",
+            "reason": "General consultation"
+          }
+        ],
+        "availability": [
+          {
+            "day": "Tuesday",
+            "startTime": "10:00",
+            "endTime": "16:00"
+          },
+          {
+            "day": "Thursday",
+            "startTime": "10:00",
+            "endTime": "16:00"
+          }
+        ]
+      },
+      {
+        "id": 21,
+        "name": "Dr. Thomas Young",
+        "specialization": "Sports Medicine",
+        "clinicAddress": "1021 Sports Med Ave, Athlete City",
+        "experience": 12,
+        "image": "https://media.istockphoto.com/id/1390000431/photo/shot-of-a-mature-doctor-using-a-digital-tablet-in-a-modern-hospital.jpg?s=612x612&w=0&k=20&c=ofnikeDwvLhhEvLpSuQME5kWclGchqUKSHQFdQ4mcWo=",
+        "appointments": [
+          {
+            "appointmentId": 1028,
+            "patientName": "Bob Johnson",
+            "date": "2025-03-17",
+            "time": "10:00",
+            "reason": "Sports injury evaluation"
+          }
+        ],
+        "availability": [
+          {
+            "day": "Monday",
+            "startTime": "09:00",
+            "endTime": "17:00"
+          },
+          {
+            "day": "Wednesday",
+            "startTime": "09:00",
+            "endTime": "17:00"
+          }
+        ]
+      },
+      {
+        "id": 22,
+        "name": "Dr. Lisa Hernandez",
+        "specialization": "Allergology",
+        "clinicAddress": "1022 Allergy Rd, Allergen Town",
+        "experience": 8,
+        "image": "https://media.istockphoto.com/id/1459191194/photo/portrait-of-mid-adult-nurse-man-at-hospital.jpg?s=612x612&w=0&k=20&c=jl8a2xDR_Kd3Jba3rzQp7W9I6Zz3FsVmJmUfs_RTUz8=",
+        "appointments": [
+          {
+            "appointmentId": 1029,
+            "patientName": "Charlie Brown",
+            "date": "2025-03-18",
+            "time": "09:15",
+            "reason": "Allergy testing"
+          },
+          {
+            "appointmentId": 1030,
+            "patientName": "David Wilson",
+            "date": "2025-03-18",
+            "time": "11:45",
+            "reason": "Seasonal allergy consultation"
+          }
+        ],
+        "availability": [
+          {
+            "day": "Tuesday",
+            "startTime": "10:00",
+            "endTime": "16:00"
+          },
+          {
+            "day": "Thursday",
+            "startTime": "10:00",
+            "endTime": "16:00"
+          }
+        ]
+      },
+      {
+        "id": 23,
+        "name": "Dr. Anthony King",
+        "specialization": "Immunology",
+        "clinicAddress": "1023 Immunity St, Immune City",
+        "experience": 14,
+        "image": "https://media.istockphoto.com/id/1167770939/photo/young-indian-doctor-man-standing-over-isolated-yellow-background-happy-face-smiling-with.jpg?s=612x612&w=0&k=20&c=4hjCDwvljD65iFN2Qc40jOfnAVRNSUrRhmiiYCxPYUw=",
+        "appointments": [
+          {
+            "appointmentId": 1031,
+            "patientName": "Emma Davis",
+            "date": "2025-03-19",
+            "time": "10:30",
+            "reason": "Immune system evaluation"
+          }
+        ],
+        "availability": [
+          {
+            "day": "Monday",
+            "startTime": "09:00",
+            "endTime": "17:00"
+          },
+          {
+            "day": "Wednesday",
+            "startTime": "09:00",
+            "endTime": "17:00"
+          }
+        ]
+      },
+      {
+        "id": 24,
+        "name": "Dr. Margaret Wright",
+        "specialization": "Infectious Disease",
+        "clinicAddress": "1024 Infectious Ln, Infection City",
+        "experience": 6,
+        "image": "https://media.istockphoto.com/id/1633320190/photo/happy-woman-or-doctor-face-in-busy-hospital-with-tablet-for-healthcare-services-leadership.jpg?s=612x612&w=0&k=20&c=2KyRtO_fsF3_jNEsRoxaCUMBs50_BG9Z6f8PnvoYWHs=",
+        "appointments": [
+          {
+            "appointmentId": 1032,
+            "patientName": "Fiona Garcia",
+            "date": "2025-03-20",
+            "time": "13:00",
+            "reason": "Infection treatment follow-up"
+          },
+          {
+            "appointmentId": 1033,
+            "patientName": "George Martinez",
+            "date": "2025-03-20",
+            "time": "15:30",
+            "reason": "Viral infection consultation"
+          }
+        ],
+        "availability": [
+          {
+            "day": "Tuesday",
+            "startTime": "10:00",
+            "endTime": "16:00"
+          },
+          {
+            "day": "Thursday",
+            "startTime": "10:00",
+            "endTime": "16:00"
+          }
+        ]
+      },
+      {
+        "id": 25,
+        "name": "Dr. Christopher Lopez",
+        "specialization": "Hematology",
+        "clinicAddress": "1025 Blood Dr, Hemato Town",
+        "experience": 20,
+        "image": "https://media.istockphoto.com/id/1425798958/photo/photo-of-confident-female-doctor-in-hospital-looking-at-camera-with-smile.jpg?s=612x612&w=0&k=20&c=i91idG544pXuYkw5ju6iIzm1m-lEqQaygeOOrjG5GEk=",
+        "appointments": [
+          {
+            "appointmentId": 1034,
+            "patientName": "Hannah Anderson",
+            "date": "2025-03-10",
+            "time": "10:45",
+            "reason": "Blood disorder check"
+          }
+        ],
+        "availability": [
+          {
+            "day": "Monday",
+            "startTime": "09:00",
+            "endTime": "17:00"
+          },
+          {
+            "day": "Wednesday",
+            "startTime": "09:00",
+            "endTime": "17:00"
+          }
+        ]
+      },
+      {
+        "id": 26,
+        "name": "Dr. Sandra Hill",
+        "specialization": "Radiology",
+        "clinicAddress": "1026 X-Ray Blvd, Radiology City",
+        "experience": 15,
+        "image": "https://media.istockphoto.com/id/1806608544/photo/portrait-of-a-female-doctor-at-the-workplace.jpg?s=612x612&w=0&k=20&c=MARkttlfJ1JoAxKffrmXxbI_rIPJTKWaKTrFv1qwCZc=",
+        "appointments": [
+          {
+            "appointmentId": 1035,
+            "patientName": "Ian Thomas",
+            "date": "2025-03-11",
+            "time": "12:00",
+            "reason": "X-ray evaluation"
+          },
+          {
+            "appointmentId": 1036,
+            "patientName": "Julia Moore",
+            "date": "2025-03-11",
+            "time": "14:00",
+            "reason": "Radiology follow-up"
+          }
+        ],
+        "availability": [
+          {
+            "day": "Tuesday",
+            "startTime": "10:00",
+            "endTime": "16:00"
+          },
+          {
+            "day": "Thursday",
+            "startTime": "10:00",
+            "endTime": "16:00"
+          }
+        ]
+      },
+      {
+        "id": 27,
+        "name": "Dr. Matthew Scott",
+        "specialization": "Pathology",
+        "clinicAddress": "1027 Lab Rd, Pathology Town",
+        "experience": 9,
+        "image": "https://media.istockphoto.com/id/1371009338/photo/portrait-of-confident-a-young-dentist-working-in-his-consulting-room.jpg?s=612x612&w=0&k=20&c=I212vN7lPpAOwGKRoEY9kYWunJaMj9vH2g-8YBGc2MI=",
+        "appointments": [
+          {
+            "appointmentId": 1037,
+            "patientName": "Kevin Martin",
+            "date": "2025-03-12",
+            "time": "11:30",
+            "reason": "Lab test review"
+          }
+        ],
+        "availability": [
+          {
+            "day": "Monday",
+            "startTime": "09:00",
+            "endTime": "17:00"
+          },
+          {
+            "day": "Wednesday",
+            "startTime": "09:00",
+            "endTime": "17:00"
+          }
+        ]
+      },
+      {
+        "id": 28,
+        "name": "Dr. Jessica Green",
+        "specialization": "Anesthesiology",
+        "clinicAddress": "1028 Anesthesia Ave, Sleep City",
+        "experience": 11,
+        "image": "https://media.istockphoto.com/id/1346124900/photo/confident-successful-mature-doctor-at-hospital.jpg?s=612x612&w=0&k=20&c=S93n5iTDVG3_kJ9euNNUKVl9pgXTOdVQcI_oDGG-QlE=",
+        "appointments": [
+          {
+            "appointmentId": 1038,
+            "patientName": "Laura Lee",
+            "date": "2025-03-13",
+            "time": "09:00",
+            "reason": "Pre-anesthesia check"
+          },
+          {
+            "appointmentId": 1039,
+            "patientName": "Michael Harris",
+            "date": "2025-03-13",
+            "time": "12:00",
+            "reason": "Anesthesia consultation"
+          }
+        ],
+        "availability": [
+          {
+            "day": "Tuesday",
+            "startTime": "10:00",
+            "endTime": "16:00"
+          },
+          {
+            "day": "Thursday",
+            "startTime": "10:00",
+            "endTime": "16:00"
+          }
+        ]
+      },
+      {
+        "id": 29,
+        "name": "Dr. Kevin Adams",
+        "specialization": "Emergency Medicine",
+        "clinicAddress": "1029 ER St, Emergency City",
+        "experience": 18,
+        "image": "https://media.istockphoto.com/id/1468678624/photo/nurse-hospital-employee-and-portrait-of-black-man-in-a-healthcare-wellness-and-clinic-feeling.jpg?s=612x612&w=0&k=20&c=AGQPyeEitUPVm3ud_h5_yVX4NKY9mVyXbFf50ZIEtQI=",
+        "appointments": [
+          {
+            "appointmentId": 1040,
+            "patientName": "Nina Clark",
+            "date": "2025-03-14",
+            "time": "10:30",
+            "reason": "Emergency evaluation"
+          }
+        ],
+        "availability": [
+          {
+            "day": "Monday",
+            "startTime": "09:00",
+            "endTime": "17:00"
+          },
+          {
+            "day": "Wednesday",
+            "startTime": "09:00",
+            "endTime": "17:00"
+          }
+        ]
+      },
+      {
+        "id": 30,
+        "name": "Dr. Robert Allen",
+        "specialization": "Internal Medicine",
+        "clinicAddress": "1030 Internal Med Rd, Intern City",
+        "experience": 25,
+        "image": "https://media.istockphoto.com/id/1486172842/photo/portrait-of-male-nurse-in-his-office.jpg?s=612x612&w=0&k=20&c=vBIEvzn70aQ6X6yy0Vjy-9Gfy-YC0IlmOjrKFYdBUzk=",
+        "appointments": [
+          {
+            "appointmentId": 1041,
+            "patientName": "Oliver Lewis",
+            "date": "2025-03-15",
+            "time": "11:15",
+            "reason": "Internal medicine check-up"
+          },
+          {
+            "appointmentId": 1042,
+            "patientName": "Pamela Walker",
+            "date": "2025-03-15",
+            "time": "13:30",
+            "reason": "Follow-up consultation"
+          }
+        ],
+        "availability": [
+          {
+            "day": "Tuesday",
+            "startTime": "10:00",
+            "endTime": "16:00"
+          },
+          {
+            "day": "Thursday",
+            "startTime": "10:00",
+            "endTime": "16:00"
+          }
+        ]
+      }
+    ]
+  }
+  
