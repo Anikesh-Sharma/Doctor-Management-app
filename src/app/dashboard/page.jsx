@@ -19,7 +19,8 @@ export default function DashboardPage() {
             doctorName: "Dr. John Doe",
             title: "Appointment with Patient A",
             patientName: "Alice Johnson",
-            status: "confirmed"
+            status: "confirmed",
+            notes: "Discuss lab results", // Example note
           },
           {
             id: 2,
@@ -28,7 +29,7 @@ export default function DashboardPage() {
             doctorName: "Dr. John Doe",
             title: "Appointment with Patient B",
             patientName: "Bob Smith",
-            status: "confirmed"
+            status: "confirmed",
           },
           {
             id: 3,
@@ -37,7 +38,7 @@ export default function DashboardPage() {
             doctorName: "Dr. John Doe",
             title: "Urgent Consultation",
             patientName: "Charlie Brown",
-            status: "pending"
+            status: "pending",
           },
         ]
       : [
@@ -48,7 +49,7 @@ export default function DashboardPage() {
             doctorName: "Dr. Jane Smith",
             title: "Consultation with Dr. Jane Smith",
             type: "check-up",
-            status: "confirmed"
+            status: "confirmed",
           },
           {
             id: 2,
@@ -57,7 +58,7 @@ export default function DashboardPage() {
             doctorName: "Dr. Mark Brown",
             title: "Follow-up with Dr. Mark Brown",
             type: "follow-up",
-            status: "confirmed"
+            status: "confirmed",
           },
           {
             id: 3,
@@ -66,7 +67,8 @@ export default function DashboardPage() {
             doctorName: "Dr. Jane Smith",
             title: "Annual Physical",
             type: "physical",
-            status: "pending"
+            status: "pending",
+            notes: "Patient feeling dizzy",
           },
         ];
 

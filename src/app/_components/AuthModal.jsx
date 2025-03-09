@@ -8,7 +8,7 @@ import { Label } from "@/components/ui/label";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { UserRound, Stethoscope, Mail, Lock, User } from "lucide-react";
 
-const AuthModal = ({ isOpen, onClose }) => {
+const AuthModal = ({ isOpen, onOpenChange }) => {
   const [isDoctor, setIsDoctor] = useState(false);
   const [isLogin, setIsLogin] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
@@ -18,11 +18,13 @@ const AuthModal = ({ isOpen, onClose }) => {
   const [password, setPassword] = useState("");
   const [fullName, setFullName] = useState("");
   const [specialization, setSpecialization] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const router = useRouter();
 
   const handleToggleUserType = () => {
     setIsDoctor(!isDoctor);
+    setErrorMessage("");
   };
 
   const handleToggleAuthMode = () => {
@@ -32,39 +34,62 @@ const AuthModal = ({ isOpen, onClose }) => {
     setPassword("");
     setFullName("");
     setSpecialization("");
+    setErrorMessage("");
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsLoading(true);
+    setErrorMessage("");
 
-    // Simulate a network delay of 1.5 seconds
     setTimeout(() => {
-      setIsLoading(false);
-
-      // Create user data object based on login or signup mode
-      const userData = isLogin
-        ? {
-            userType: isDoctor ? "doctor" : "patient",
-            email: email,
-          }
-        : {
-            userType: isDoctor ? "doctor" : "patient",
-            name: fullName,
-            email: email,
-            specialization: isDoctor ? specialization : null,
-          };
-
-      // Save user data in localStorage
-      localStorage.setItem("user", JSON.stringify(userData));
-
-      // Redirect to the dashboard page with a query parameter for userType
-      router.push(`/dashboard?userType=${userData.userType}`);
-      onClose();
+      if (isLogin) {
+        // LOGIN FLOW
+        const storedUsers = JSON.parse(localStorage.getItem("users") || "[]");
+        const matchedUser = storedUsers.find(
+          (user) => user.email === email && user.password === password
+        );
+        if (!matchedUser) {
+          setErrorMessage("Email or password is incorrect. Please try again.");
+          setIsLoading(false);
+          return;
+        }
+        // Successful login: save session user and redirect
+        localStorage.setItem("user", JSON.stringify(matchedUser));
+        router.push(`/dashboard?userType=${matchedUser.userType}`);
+        setIsLoading(false);
+        onOpenChange(false);
+      } else {
+        // SIGNUP FLOW
+        const storedUsers = JSON.parse(localStorage.getItem("users") || "[]");
+        const existingUser = storedUsers.find((user) => user.email === email);
+        if (existingUser) {
+          setErrorMessage("User with this email already exists. Please login instead.");
+          setIsLoading(false);
+          return;
+        }
+        const newUser = {
+          userType: isDoctor ? "doctor" : "patient",
+          name: fullName,
+          email: email,
+          password: password,
+          specialization: isDoctor ? specialization : null,
+        };
+        storedUsers.push(newUser);
+        localStorage.setItem("users", JSON.stringify(storedUsers));
+        // Instead of logging in automatically, switch to login mode.
+        setIsLoading(false);
+        setErrorMessage("Account created successfully. Please login.");
+        setIsLogin(true);
+        setEmail("");
+        setPassword("");
+        setFullName("");
+        setSpecialization("");
+      }
     }, 1500);
   };
 
-  // Enhanced toggle with smooth animation (UI remains unchanged)
+  // Enhanced toggle with smooth animation
   const CustomToggle = ({ checked, onChange }) => (
     <button
       type="button"
@@ -73,7 +98,7 @@ const AuthModal = ({ isOpen, onClose }) => {
       style={{ backgroundColor: checked ? "white" : "rgba(255, 255, 255, 0.4)" }}
     >
       <span
-        className="absolute inset-y-0.5 left-0.5 flex items-center justify-center"
+        className="absolute inset-y-0 left-0.5 flex items-center justify-center"
         style={{
           transform: checked ? "translateX(28px)" : "translateX(0)",
           transition: "transform 0.3s ease-in-out",
@@ -85,9 +110,9 @@ const AuthModal = ({ isOpen, onClose }) => {
   );
 
   return (
-    <Dialog open={isOpen} onOpenChange={onClose}>
+    <Dialog open={isOpen} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-xl w-11/12 rounded-xl p-0 overflow-hidden shadow-2xl animate-in fade-in-50 zoom-in-95 duration-300">
-        {/* Header with gradient */}
+        {/* Header */}
         <div className="bg-gradient-to-r from-[#5636e5] to-[#7a60ff] p-8 text-white">
           <DialogTitle className="text-2xl font-bold text-center mb-6">
             {isLogin ? "Welcome Back" : "Create Account"}
@@ -95,164 +120,152 @@ const AuthModal = ({ isOpen, onClose }) => {
 
           {/* User type toggle */}
           <div className="flex justify-center items-center gap-4 bg-white/10 p-4 rounded-lg transition-all duration-300 ease-in-out">
-            <div className={`flex items-center gap-2 transition-opacity duration-300 ${!isDoctor ? "opacity-100" : "opacity-60"}`}>
+            <div className={`flex items-center gap-2 ${!isDoctor ? "opacity-100" : "opacity-60"}`}>
               <UserRound size={20} />
               <span className="font-medium text-lg">Patient</span>
             </div>
             <CustomToggle checked={isDoctor} onChange={handleToggleUserType} />
-            <div className={`flex items-center gap-2 transition-opacity duration-300 ${isDoctor ? "opacity-100" : "opacity-60"}`}>
+            <div className={`flex items-center gap-2 ${isDoctor ? "opacity-100" : "opacity-60"}`}>
               <Stethoscope size={20} />
               <span className="font-medium text-lg">Doctor</span>
             </div>
           </div>
         </div>
 
-        {/* Form section with animation */}
+        {/* Form Section */}
         <div className="p-8">
-          <div
-            className="relative overflow-hidden"
-            style={{ height: isLogin ? "auto" : "0", opacity: isLogin ? 1 : 0, transition: "opacity 0.3s ease-in-out" }}
-          >
-            {isLogin && (
-              // Login Form
-              <form className="space-y-5" onSubmit={handleSubmit}>
-                <div className="space-y-2">
-                  <Label htmlFor="email" className="text-gray-700 text-base">
-                    Email Address
-                  </Label>
-                  <div className="relative">
-                    <Mail className="absolute left-3 top-3.5 h-5 w-5 text-gray-400" />
-                    <Input
-                      id="email"
-                      type="email"
-                      placeholder="Enter your email"
-                      className="pl-10 py-6 border-gray-200 focus:border-[#5636e5] focus:ring-[#5636e5] text-base rounded-lg"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      required
-                    />
-                  </div>
+          {isLogin ? (
+            // Login Form
+            <form className="space-y-5" onSubmit={handleSubmit}>
+              <div className="space-y-2">
+                <Label htmlFor="email" className="text-gray-700 text-base">
+                  Email Address
+                </Label>
+                <div className="relative">
+                  <Mail className="absolute left-3 top-3.5 h-5 w-5 text-gray-400" />
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder="Enter your email"
+                    className="pl-10 py-6 border-gray-200 focus:border-[#5636e5] focus:ring-[#5636e5] text-base rounded-lg"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                  />
                 </div>
+              </div>
 
-                <div className="space-y-2">
-                  <div className="flex justify-between">
-                    <Label htmlFor="password" className="text-gray-700 text-base">
-                      Password
-                    </Label>
-                    <a href="#" className="text-sm text-[#5636e5] hover:underline">
-                      Forgot password?
-                    </a>
-                  </div>
-                  <div className="relative">
-                    <Lock className="absolute left-3 top-3.5 h-5 w-5 text-gray-400" />
-                    <Input
-                      id="password"
-                      type="password"
-                      placeholder="Enter your password"
-                      className="pl-10 py-6 border-gray-200 focus:border-[#5636e5] focus:ring-[#5636e5] text-base rounded-lg"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      required
-                    />
-                  </div>
-                </div>
-
-                <Button
-                  type="submit"
-                  className="w-full bg-gradient-to-r from-[#5636e5] to-[#7a60ff] hover:opacity-90 py-6 mt-4 text-lg font-medium rounded-lg relative overflow-hidden"
-                  disabled={isLoading}
-                >
-                  {isLoading ? (
-                    <div className="flex items-center justify-center">
-                      <svg
-                        className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                      >
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                        <path
-                          className="opacity-75"
-                          fill="currentColor"
-                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                        ></path>
-                      </svg>
-                      Processing...
-                    </div>
-                  ) : (
-                    "Login"
-                  )}
-                </Button>
-              </form>
-            )}
-          </div>
-
-          <div
-            className="relative overflow-hidden"
-            style={{ height: !isLogin ? "auto" : "0", opacity: !isLogin ? 1 : 0, transition: "opacity 0.3s ease-in-out" }}
-          >
-            {!isLogin && (
-              // Signup Form
-              <form className="space-y-5" onSubmit={handleSubmit}>
-                <div className="space-y-2">
-                  <Label htmlFor="fullName" className="text-gray-700 text-base">
-                    Full Name
-                  </Label>
-                  <div className="relative">
-                    <User className="absolute left-3 top-3.5 h-5 w-5 text-gray-400" />
-                    <Input
-                      id="fullName"
-                      type="text"
-                      placeholder="Enter your full name"
-                      className="pl-10 py-6 border-gray-200 focus:border-[#5636e5] focus:ring-[#5636e5] text-base rounded-lg"
-                      value={fullName}
-                      onChange={(e) => setFullName(e.target.value)}
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="signupEmail" className="text-gray-700 text-base">
-                    Email Address
-                  </Label>
-                  <div className="relative">
-                    <Mail className="absolute left-3 top-3.5 h-5 w-5 text-gray-400" />
-                    <Input
-                      id="signupEmail"
-                      type="email"
-                      placeholder="Enter your email"
-                      className="pl-10 py-6 border-gray-200 focus:border-[#5636e5] focus:ring-[#5636e5] text-base rounded-lg"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="signupPassword" className="text-gray-700 text-base">
+              <div className="space-y-2">
+                <div className="flex justify-between">
+                  <Label htmlFor="password" className="text-gray-700 text-base">
                     Password
                   </Label>
-                  <div className="relative">
-                    <Lock className="absolute left-3 top-3.5 h-5 w-5 text-gray-400" />
-                    <Input
-                      id="signupPassword"
-                      type="password"
-                      placeholder="Create a password"
-                      className="pl-10 py-6 border-gray-200 focus:border-[#5636e5] focus:ring-[#5636e5] text-base rounded-lg"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      required
-                    />
-                  </div>
+                  <a href="#" className="text-sm text-[#5636e5] hover:underline">
+                    Forgot password?
+                  </a>
                 </div>
+                <div className="relative">
+                  <Lock className="absolute left-3 top-3.5 h-5 w-5 text-gray-400" />
+                  <Input
+                    id="password"
+                    type="password"
+                    placeholder="Enter your password"
+                    className="pl-10 py-6 border-gray-200 focus:border-[#5636e5] focus:ring-[#5636e5] text-base rounded-lg"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                  />
+                </div>
+              </div>
 
-                <div
-                  className={`space-y-2 transition-all duration-300 ease-in-out ${
-                    isDoctor ? "opacity-100 max-h-24" : "opacity-0 max-h-0 overflow-hidden"
-                  }`}
-                >
+              {errorMessage && <p className="text-red-500 text-sm mt-2">{errorMessage}</p>}
+
+              <Button
+                type="submit"
+                className="w-full bg-gradient-to-r from-[#5636e5] to-[#7a60ff] hover:opacity-90 py-6 mt-4 text-lg font-medium rounded-lg"
+                disabled={isLoading}
+              >
+                {isLoading ? (
+                  <div className="flex items-center justify-center">
+                    <svg
+                      className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                      ></path>
+                    </svg>
+                    Processing...
+                  </div>
+                ) : (
+                  "Login"
+                )}
+              </Button>
+            </form>
+          ) : (
+            // Signup Form
+            <form className="space-y-5" onSubmit={handleSubmit}>
+              <div className="space-y-2">
+                <Label htmlFor="fullName" className="text-gray-700 text-base">
+                  Full Name
+                </Label>
+                <div className="relative">
+                  <User className="absolute left-3 top-3.5 h-5 w-5 text-gray-400" />
+                  <Input
+                    id="fullName"
+                    type="text"
+                    placeholder="Enter your full name"
+                    className="pl-10 py-6 border-gray-200 focus:border-[#5636e5] focus:ring-[#5636e5] text-base rounded-lg"
+                    value={fullName}
+                    onChange={(e) => setFullName(e.target.value)}
+                    required
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="signupEmail" className="text-gray-700 text-base">
+                  Email Address
+                </Label>
+                <div className="relative">
+                  <Mail className="absolute left-3 top-3.5 h-5 w-5 text-gray-400" />
+                  <Input
+                    id="signupEmail"
+                    type="email"
+                    placeholder="Enter your email"
+                    className="pl-10 py-6 border-gray-200 focus:border-[#5636e5] focus:ring-[#5636e5] text-base rounded-lg"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="signupPassword" className="text-gray-700 text-base">
+                  Password
+                </Label>
+                <div className="relative">
+                  <Lock className="absolute left-3 top-3.5 h-5 w-5 text-gray-400" />
+                  <Input
+                    id="signupPassword"
+                    type="password"
+                    placeholder="Create a password"
+                    className="pl-10 py-6 border-gray-200 focus:border-[#5636e5] focus:ring-[#5636e5] text-base rounded-lg"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                  />
+                </div>
+              </div>
+
+              {isDoctor && (
+                <div className="space-y-2 transition-all duration-300 ease-in-out">
                   <Label htmlFor="specialization" className="text-gray-700 text-base">
                     Specialization
                   </Label>
@@ -269,41 +282,42 @@ const AuthModal = ({ isOpen, onClose }) => {
                     />
                   </div>
                 </div>
+              )}
 
-                <Button
-                  type="submit"
-                  className="w-full bg-gradient-to-r from-[#5636e5] to-[#7a60ff] hover:opacity-90 py-6 mt-4 text-lg font-medium rounded-lg"
-                  disabled={isLoading}
-                >
-                  {isLoading ? (
-                    <div className="flex items-center justify-center">
-                      <svg
-                        className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                      >
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                      </svg>
-                      Processing...
-                    </div>
-                  ) : (
-                    "Create Account"
-                  )}
-                </Button>
-              </form>
-            )}
-          </div>
+              {errorMessage && <p className="text-red-500 text-sm mt-2">{errorMessage}</p>}
 
-          {/* Toggle between login and signup */}
+              <Button
+                type="submit"
+                className="w-full bg-gradient-to-r from-[#5636e5] to-[#7a60ff] hover:opacity-90 py-6 mt-4 text-lg font-medium rounded-lg"
+                disabled={isLoading}
+              >
+                {isLoading ? (
+                  <div className="flex items-center justify-center">
+                    <svg
+                      className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Processing...
+                  </div>
+                ) : (
+                  "Create Account"
+                )}
+              </Button>
+            </form>
+          )}
+
           <div className="mt-8 text-center">
             <p className="text-gray-600 text-base">
               {isLogin ? "Don't have an account? " : "Already have an account? "}
               <button
                 type="button"
                 onClick={handleToggleAuthMode}
-                className="text-[#5636e5] font-medium hover:underline focus:outline-none transition-colors duration-300"
+                className="text-[#5636e5] font-medium hover:underline transition-colors duration-300"
               >
                 {isLogin ? "Sign up" : "Login"}
               </button>
