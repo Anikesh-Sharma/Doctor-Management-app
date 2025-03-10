@@ -93,13 +93,9 @@ Usage
     Contact Page:
     Use the contact form to send inquiries or feedback to the support team.
 
-Demo
+Video - https://www.loom.com/share/cbca4221ba5242ae90bb06b333b7526e?sid=5235a410-c2ec-41ee-98cf-57e981922184
 
-    Video Demo:
-    Watch the demo video on Loom: Demo Video
-
-    Live Deployment:
-    Try out the live app here: Doctor Appointment App
+Deployed link -https://doctor-management-app-spda.vercel.app/
 
 Folder Structure
 
