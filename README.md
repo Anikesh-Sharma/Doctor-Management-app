@@ -16,7 +16,7 @@ Doctor Appointment App is a comprehensive web application designed to streamline
 - [Technologies Used](#technologies-used)
 - [Contributing](#contributing)
 - [License](#license)
-- [About](#about)
+- [About Doctor Appointment App](#about-doctor-appointment-app)
 
 ---
 
@@ -95,11 +95,11 @@ Usage
 
 Demo
 
-    Video:
-    https://www.loom.com/share/cbca4221ba5242ae90bb06b333b7526e?sid=b5e36782-6b2c-4ad5-9bf3-0346bc0d5e33
+    Video Demo:
+    Watch the demo video on Loom: Demo Video
 
-    Live:
-    https://doctor-management-app-spda.vercel.app/
+    Live Deployment:
+    Try out the live app here: Doctor Appointment App
 
 Folder Structure
 
@@ -164,7 +164,7 @@ Push to your branch:
 License
 
 This project is licensed under the MIT License.
-About
+About Doctor Appointment App
 
 Doctor Appointment App is a cutting-edge solution designed to simplify the appointment process between patients and healthcare professionals. The application addresses common challenges in healthcare scheduling by providing:
 
@@ -180,4 +180,4 @@ Doctor Appointment App is a cutting-edge solution designed to simplify the appoi
     Unified Booking Flow:
     Whether booking via the doctor listing or the dashboard, appointment details (including time in AM/PM format and any notes) are consistently displayed.
 
-By leveraging modern web technologies and design principles, the app aims to improve communication, reduce administrative overhead, and ultimately enhance the overall healthcare experience.
+By leveraging modern web technologies and design principles, Doctor Appointment App aims to improve communication, reduce administrative overhead, and ultimately enhance the overall healthcare experience.
