@@ -1,10 +1,11 @@
 "use client";
 
-import React from "react";
+import React, { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Dashboard from "@/app/_components/Dashboard";
 
-export default function DashboardPage() {
+// Separate component so that useSearchParams is inside a Suspense boundary.
+function DashboardPageContent() {
   const searchParams = useSearchParams();
   const userType = searchParams.get("userType") || "patient";
 
@@ -20,7 +21,7 @@ export default function DashboardPage() {
             title: "Appointment with Patient A",
             patientName: "Alice Johnson",
             status: "confirmed",
-            notes: "Discuss lab results", // Example note
+            notes: "Discuss lab results",
           },
           {
             id: 2,
@@ -73,4 +74,12 @@ export default function DashboardPage() {
         ];
 
   return <Dashboard appointments={appointments} userType={userType} />;
+}
+
+export default function DashboardPage() {
+  return (
+    <Suspense fallback={<div>Loading Dashboard...</div>}>
+      <DashboardPageContent />
+    </Suspense>
+  );
 }
